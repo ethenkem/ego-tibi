@@ -40,7 +40,8 @@ public class Ticket {
     private String assignedTeam;
 
     @Column(nullable = false, updatable = false)
-    private Instant createdAt;
+    @Builder.Default
+    private Instant createdAt = Instant.now();
 
     @Column(nullable = false, updatable = false)
     private Instant updatedAt;

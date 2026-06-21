@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class TicketReponse {
+public class TicketResponse {
     private String id;
     private String title;
     private String description;
