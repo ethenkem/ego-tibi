@@ -1,8 +1,7 @@
-package com.egotibi.ticketservice.modules.ticket.helpers;
+package com.egotibi.ticketservice.modules.ticket;
 
 import org.mapstruct.Mapper;
 
-import com.egotibi.ticketservice.modules.ticket.Ticket;
 import com.egotibi.ticketservice.modules.ticket.dto.CreateTicket;
 import com.egotibi.ticketservice.modules.ticket.dto.TicketReponse;
 
