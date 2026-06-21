@@ -1,10 +1,16 @@
 services:
   postgres:
     image: postgres:14.23-alpine3.24
-    container_name: ticketservice-postgres
+    container_name: egotibi-postgres
     environment:
-      - POSTGRES_DB=ticketservice
-      - POSTGRES_USER=ticketservice
-      - POSTGRES_PASSWORD=[PASSWORD]
+      - DB_USERNAME=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
+
+  # rabbitmq:
+  #   image: rabbitmq:3-management
+  #   container_name: egotibi-rabbitmq
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
