@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:14.23-alpine3.24
+    container_name: ticketservice-postgres
+    environment:
+      - POSTGRES_DB=ticketservice
+      - POSTGRES_USER=ticketservice
+      - POSTGRES_PASSWORD=[PASSWORD]
+    ports:
+      - "5432:5432"
