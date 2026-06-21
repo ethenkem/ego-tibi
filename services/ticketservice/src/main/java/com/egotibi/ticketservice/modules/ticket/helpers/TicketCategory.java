@@ -1,4 +1,4 @@
-package com.egotibi.ticketservice.modules.helpers;
+package com.egotibi.ticketservice.modules.ticket.helpers;
 
 public enum TicketCategory {
     HARDWARE,

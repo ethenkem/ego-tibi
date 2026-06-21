@@ -1,10 +1,11 @@
 package com.egotibi.ticketservice.modules.ticket;
 
 import java.time.Instant;
+import java.util.UUID;
 
-import com.egotibi.ticketservice.modules.helpers.TicketCategory;
-import com.egotibi.ticketservice.modules.helpers.TicketPriority;
-import com.egotibi.ticketservice.modules.helpers.TicketStatus;
+import com.egotibi.ticketservice.modules.ticket.helpers.TicketCategory;
+import com.egotibi.ticketservice.modules.ticket.helpers.TicketPriority;
+import com.egotibi.ticketservice.modules.ticket.helpers.TicketStatus;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
 
     private String title;
     private String description;
