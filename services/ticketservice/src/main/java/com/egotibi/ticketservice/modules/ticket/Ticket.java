@@ -37,6 +37,8 @@ public class Ticket {
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
 
+    private String assignedTeam;
+
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
