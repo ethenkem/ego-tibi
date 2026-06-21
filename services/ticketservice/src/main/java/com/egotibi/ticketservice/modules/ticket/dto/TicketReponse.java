@@ -1,9 +1,12 @@
 package com.egotibi.ticketservice.modules.ticket.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class CreateTicket {
+@Builder
+public class TicketReponse {
+    private String id;
     private String title;
     private String description;
     private String requesterEmail;
