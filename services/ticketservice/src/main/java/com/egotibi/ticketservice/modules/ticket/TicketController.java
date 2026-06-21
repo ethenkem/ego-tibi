@@ -9,6 +9,4 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/tickets")
 @RequiredArgsConstructor
 public class TicketController {
-    private final TicketService ticketService;
-    }
 }
