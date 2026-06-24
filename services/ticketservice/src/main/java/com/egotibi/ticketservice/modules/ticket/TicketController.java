@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.egotibi.ticketservice.modules.ticket.dto.CreateTicket;
 import com.egotibi.ticketservice.modules.ticket.dto.TicketResponse;
+import com.egotibi.ticketservice.modules.ticket.dto.UpdateTicket;
 import com.egotibi.ticketservice.shared.ApiResponseFactory;
 import com.egotibi.ticketservice.shared.dto.ApiResponse;
 
@@ -37,6 +40,15 @@ public class TicketController {
         List<TicketResponse> ticketResponses = this.ticketService.getAllTickets();
         ApiResponse<List<TicketResponse>> response = ApiResponseFactory.<List<TicketResponse>>success(ticketResponses,
                 "Tickets has been fetched");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PatchMapping("{ticketId}")
+    public ResponseEntity<ApiResponse<TicketResponse>> updateTicket(@PathVariable String ticketId,
+            @Valid @RequestBody UpdateTicket dtos) {
+        TicketResponse ticketResponse = this.ticketService.updateTicket(ticketId, dtos);
+        ApiResponse<TicketResponse> response = ApiResponseFactory.<TicketResponse>success(ticketResponse,
+                "Ticket has been updated");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
