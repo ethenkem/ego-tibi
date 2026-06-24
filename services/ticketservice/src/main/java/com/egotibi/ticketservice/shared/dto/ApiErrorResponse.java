@@ -5,14 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiError {
+public class ApiErrorResponse {
+    private final boolean success = false;
     private int status;
     private String error;
-    private List<String> errors;
+    // private String code;
+    private Object details;
+    private String path;
+    private final LocalDateTime timestamp = LocalDateTime.now();
 }

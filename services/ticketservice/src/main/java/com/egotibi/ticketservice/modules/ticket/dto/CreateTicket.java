@@ -1,6 +1,10 @@
 package com.egotibi.ticketservice.modules.ticket.dto;
 
+import com.egotibi.ticketservice.modules.ticket.helpers.TicketCategory;
+import com.egotibi.ticketservice.modules.ticket.helpers.TicketPriority;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -14,9 +18,9 @@ public class CreateTicket {
     @NotBlank(message = "Requester email is required")
     private String requesterEmail;
 
-    @NotBlank(message = "Category is required")
-    private String category;
+    @NotNull(message = "Category is required")
+    private TicketCategory category;
 
-    @NotBlank(message = "Priority is required")
-    private String priority;
+    @NotNull(message = "Priority is required")
+    private TicketPriority priority;
 }

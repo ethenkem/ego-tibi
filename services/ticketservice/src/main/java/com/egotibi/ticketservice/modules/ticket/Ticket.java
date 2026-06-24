@@ -3,6 +3,10 @@ package com.egotibi.ticketservice.modules.ticket;
 import java.time.Instant;
 import java.util.UUID;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.egotibi.ticketservice.modules.ticket.helpers.TicketCategory;
 import com.egotibi.ticketservice.modules.ticket.helpers.TicketPriority;
 import com.egotibi.ticketservice.modules.ticket.helpers.TicketStatus;
@@ -19,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -40,10 +45,11 @@ public class Ticket {
     private String assignedTeam;
 
     @Column(nullable = false, updatable = false)
-    @Builder.Default
-    private Instant createdAt = Instant.now();
+    @CreatedDate
+    private Instant createdAt;
 
     @Column(nullable = false, updatable = false)
+    @LastModifiedDate
     private Instant updatedAt;
     private Instant routedAt;
     private Instant acknowledgedAt;

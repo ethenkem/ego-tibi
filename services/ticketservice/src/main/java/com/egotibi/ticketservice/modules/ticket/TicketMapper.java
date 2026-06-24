@@ -12,6 +12,10 @@ public interface TicketMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "status", constant = "NEW")
+    @Mapping(target = "assignedTeam", ignore = true)
+    @Mapping(target = "routedAt", ignore = true)
+    @Mapping(target = "acknowledgedAt", ignore = true)
+    @Mapping(target = "resolvedAt", ignore = true)
     Ticket toEntity(CreateTicket dto);
 
     TicketResponse toResponse(Ticket entity);

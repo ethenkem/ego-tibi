@@ -1,5 +1,10 @@
 package com.egotibi.ticketservice.shared;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+
+import com.egotibi.ticketservice.shared.dto.ApiErrorResponse;
 import com.egotibi.ticketservice.shared.dto.ApiResponse;
 
 public final class ApiResponseFactory {
@@ -11,15 +16,15 @@ public final class ApiResponseFactory {
                 .success(true)
                 .message(message)
                 .data(data)
-                .timestamp(java.time.LocalDateTime.now())
                 .build();
     }
 
-    public static ApiResponse<Void> error(String message) {
-        return ApiResponse.<Void>builder()
-                .success(false)
-                .message(message)
-                .timestamp(java.time.LocalDateTime.now())
+    public static ApiErrorResponse error(HttpStatus status, String path, String error, Object detials) {
+        return ApiErrorResponse.builder()
+                .status(status.value())
+                .error(error)
+                .details(detials)
+                .path(path)
                 .build();
     }
 }
