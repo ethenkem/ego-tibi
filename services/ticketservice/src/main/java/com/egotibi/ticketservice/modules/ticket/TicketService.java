@@ -38,4 +38,9 @@ public class TicketService {
         return this.ticketMapper.toResponse(ticket);
     }
 
+    public void deleteTicket(String ticketId) {
+        Ticket ticket = this.ticketRepository.findById(UUID.fromString(ticketId))
+                .orElseThrow(() -> new ResourceNotFound("Ticket", ticketId));
+        this.ticketRepository.delete(ticket);
+    }
 }

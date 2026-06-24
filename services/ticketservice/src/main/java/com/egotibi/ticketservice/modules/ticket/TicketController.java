@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +51,14 @@ public class TicketController {
         TicketResponse ticketResponse = this.ticketService.updateTicket(ticketId, dtos);
         ApiResponse<TicketResponse> response = ApiResponseFactory.<TicketResponse>success(ticketResponse,
                 "Ticket has been updated");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @DeleteMapping("{ticketId}")
+    public ResponseEntity<ApiResponse<TicketResponse>> deleteTicket(@PathVariable String ticketId) {
+        this.ticketService.deleteTicket(ticketId);
+        ApiResponse<TicketResponse> response = ApiResponseFactory.<TicketResponse>success(null,
+                "Ticket has been deleted");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
