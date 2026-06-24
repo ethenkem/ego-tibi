@@ -1,8 +1,7 @@
 package com.egotibi.ticketservice.shared;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 import com.egotibi.ticketservice.shared.dto.ApiErrorResponse;
 import com.egotibi.ticketservice.shared.dto.ApiResponse;
@@ -19,9 +18,9 @@ public final class ApiResponseFactory {
                 .build();
     }
 
-    public static ApiErrorResponse error(HttpStatus status, String path, String error, Object detials) {
+    public static ApiErrorResponse error(int status, String path, String error, Object detials) {
         return ApiErrorResponse.builder()
-                .status(status.value())
+                .status(status)
                 .error(error)
                 .details(detials)
                 .path(path)

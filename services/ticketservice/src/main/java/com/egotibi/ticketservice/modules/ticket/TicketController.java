@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,7 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PatchMapping("{ticketId}")
+    @PutMapping("{ticketId}")
     public ResponseEntity<ApiResponse<TicketResponse>> updateTicket(@PathVariable String ticketId,
             @Valid @RequestBody UpdateTicket dtos) {
         TicketResponse ticketResponse = this.ticketService.updateTicket(ticketId, dtos);
