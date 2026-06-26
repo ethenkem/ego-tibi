@@ -1,8 +1,5 @@
 package com.egotibi.ticketservice.shared;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-
 import com.egotibi.ticketservice.shared.dto.ApiErrorResponse;
 import com.egotibi.ticketservice.shared.dto.ApiResponse;
 

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.egotibi.ticketservice.configs.rabbitmq.payloads.TicketCreatedEvent;
 import com.egotibi.ticketservice.modules.ticket.dto.CreateTicket;
 import com.egotibi.ticketservice.modules.ticket.dto.TicketResponse;
 import com.egotibi.ticketservice.modules.ticket.dto.UpdateTicket;
@@ -18,10 +19,15 @@ import lombok.RequiredArgsConstructor;
 public class TicketService {
     private final TicketRepository ticketRepository;
     private final TicketMapper ticketMapper;
+    private final TicketEventPublisher ticketEventPublisher;
 
     public TicketResponse createTicket(CreateTicket dto) {
         Ticket ticket = ticketMapper.toEntity(dto);
         ticketRepository.save(ticket);
+        TicketCreatedEvent ticketEventRecord = new TicketCreatedEvent(ticket.getId(), ticket.getTitle(),
+                ticket.getCategory(),
+                ticket.getPriority(), ticket.getRequesterEmail(), ticket.getCreatedAt());
+        ticketEventPublisher.publishTicketCreated(ticketEventRecord);
         return ticketMapper.toResponse(ticket);
     }
 
