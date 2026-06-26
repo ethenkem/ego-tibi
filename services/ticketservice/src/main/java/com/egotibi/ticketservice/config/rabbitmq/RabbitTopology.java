@@ -1,4 +1,4 @@
-package com.egotibi.ticketservice.configs.rabbitmq;
+package com.egotibi.ticketservice.config.rabbitmq;
 
 public class RabbitTopology {
     public static final String EVENT_EXCHANGE = "egotibi.events";

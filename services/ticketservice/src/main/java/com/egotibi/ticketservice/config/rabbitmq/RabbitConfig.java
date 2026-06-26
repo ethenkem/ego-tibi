@@ -1,4 +1,4 @@
-package com.egotibi.ticketservice.configs.rabbitmq;
+package com.egotibi.ticketservice.config.rabbitmq;
 
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
