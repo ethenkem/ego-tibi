@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.egotibi.ticketservice.configs.rabbitmq.payloads.TicketCreatedEvent;
+import com.egotibi.ticketservice.config.rabbitmq.payloads.TicketCreatedEvent;
 import com.egotibi.ticketservice.modules.ticket.dto.CreateTicket;
 import com.egotibi.ticketservice.modules.ticket.dto.TicketResponse;
 import com.egotibi.ticketservice.modules.ticket.dto.UpdateTicket;
