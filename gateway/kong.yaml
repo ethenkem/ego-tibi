@@ -4,7 +4,7 @@ _transform: true
 services:
   - ticket-service:
     name: ticket-service
-    url: http://ticket-service:8000
+    url: http://ticket-service:8080
     routes:
       - name: ticket-service
         paths: /api/v1/tickets
