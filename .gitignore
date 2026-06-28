@@ -34,6 +34,6 @@ build/
 
 .env
 
-docker-compose.dev.yaml
+docker-compose.dev1.yaml
 
 gateway/kong.yml

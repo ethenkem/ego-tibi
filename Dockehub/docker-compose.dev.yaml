@@ -1,0 +1,51 @@
+services:
+  ticket-service:
+    build: ../services/ticket-service
+    container_name: ticket-service
+    environment:
+      - POSTGRES_URI=${POSTGRES_URI}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - RABBIT_MQ_USERNAME=${RABBIT_MQ_USERNAME}
+      - RABBIT_MQ_PASSWORD=${RABBIT_MQ_PASSWORD}
+      - RABBIT_MQ_HOST=${RABBIT_MQ_HOST}
+
+  postgres:
+    image: postgres:14.23-alpine3.24
+    container_name: egotibi-postgres
+    environment:
+      - POSTGRES_DB=ticket_service
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin-ui
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=lemon@yahoo.com
+      - PGADMIN_DEFAULT_PASSWORD=123@12345
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: egotibi-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBIT_MQ_USERNAME}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_MQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  pgadmin_data:
+  postgres_data:
+  rabbitmq_data:
