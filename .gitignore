@@ -36,4 +36,4 @@ build/
 
 docker-compose.dev.yaml
 
-gateway/
+gateway/kong.yml
