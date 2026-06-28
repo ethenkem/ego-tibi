@@ -80,10 +80,10 @@ Only **Docker** and **Docker Compose**, nothing else. No Java, no Maven, no manu
 
 ```bash
 # 1. Get the compose file (no repo clone needed)
-curl -O https://raw.githubusercontent.com/<your-username>/ego-tibi/main/docker-compose.yml
+curl -O https://raw.githubusercontent.com/ethenkem/ego-tibi/main/docker-compose.yml
 
 # 2. Get the environment template and fill in your own values
-curl -O https://raw.githubusercontent.com/<your-username>/ego-tibi/main/.env.example
+curl -O https://raw.githubusercontent.com/ethenkem/ego-tibi/main/.env.example
 cp .env.example .env
 nano .env   # set POSTGRES_PASSWORD and any other secrets
 
@@ -134,7 +134,7 @@ These are intentionally simple and hardcoded for v1, kept that way deliberately 
 The Docker Hub images are the intended way to run this for real use. Every service's source code lives directly in this repo, under `services/`. If you want to modify routing rules, SLA windows, notification behavior, or anything else, clone the repo and build locally instead of pulling pre-built images:
 
 ```bash
-git clone https://github.com/<your-username>/ego-tibi.git
+git clone https://github.com/ethenkem/ego-tibi.git
 cd ego-tibi
 docker compose -f docker-compose.dev.yml up --build
 ```
